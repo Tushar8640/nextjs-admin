@@ -9,6 +9,7 @@ import { MdOutlineDarkMode } from "react-icons/md";
 import { BsFillBellFill } from "react-icons/bs";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { useSelector } from "react-redux";
+import Link from "next/link";
 
 const Navbar = ({ setToggle, toggle }) => {
   const cart = useSelector((state) => state.cart);
@@ -69,12 +70,13 @@ const Navbar = ({ setToggle, toggle }) => {
                 ref={ref}
               >
                 {" "}
+                <Link href={"/cart"}>
                 {cart.length > 0 && (
                   <span class="absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">
                     {cart?.length}
                   </span>
                 )}
-                <MdOutlineShoppingCart className="w-8 h-8  text-black" />
+                <MdOutlineShoppingCart className="w-8 h-8  text-black" /></Link>
               </button>
 
               <div className="relative flex-shrink-0">
