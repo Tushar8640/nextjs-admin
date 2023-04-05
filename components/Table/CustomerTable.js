@@ -27,24 +27,27 @@ const CustomerTable = ({ data }) => {
             </thead>
             <tbody>
               {data?.map((d) => (
-                <Link href={`/dashboard/customer/${d?.id}`}>
-                  <tr className="border-b border-opacity-20 border-gray-300 bg-gray-50">
-                    <td className="p-3">
-                      <p>{d?.id}</p>
-                    </td>
-                    <td className="p-3">
-                      <p>
+                <tr
+                  key={d?.id}
+                  className="border-b border-opacity-20 border-gray-300 bg-gray-50"
+                >
+                  <td className="p-3">
+                    <p>{d?.id}</p>
+                  </td>
+                  <td className="p-3">
+                    <p>
+                      <Link href={`/dashboard/customer/${d?.id}`}>
                         {d?.firstName} {d?.lastName}
-                      </p>
-                    </td>
-                    <td className="p-3">
-                      <p>{d?.email}</p>
-                    </td>
-                    <td className="p-3">
-                      <p>{d?.phone}</p>
-                    </td>
-                  </tr>
-                </Link>
+                      </Link>
+                    </p>
+                  </td>
+                  <td className="p-3">
+                    <p>{d?.email}</p>
+                  </td>
+                  <td className="p-3">
+                    <p>{d?.phone}</p>
+                  </td>
+                </tr>
               ))}
             </tbody>
           </table>
