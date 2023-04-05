@@ -22,5 +22,5 @@ Here are some resources for tailwind kit.
 
 ## License
 
-[Live Preview](https://choosealicense.com/licenses/mit/)
+[Live Preview](https://nextjs-admin-henna.vercel.app/)
 
