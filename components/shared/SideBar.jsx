@@ -7,7 +7,7 @@ const SideBar = () => {
   const [active, setActive] = useState("home");
   const [dashActive, setDashActive] = useState("");
   return (
-    <div className="flex flex-col h-full p-3 w-60 bg-gray-50 text-gray-800">
+    <div className="flex mt-2 z-50 flex-col h-full p-3 w-60 bg-gray-50 text-gray-800 fixed">
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <h2>Dashboard</h2>
@@ -80,7 +80,7 @@ const SideBar = () => {
                 >
                   <Link
                     rel="noopener noreferrer"
-                    href="/dashboard"
+                    href="/dashboard/customer"
                     className="flex items-center p-2 space-x-3 rounded-md"
                   >
                     <svg
@@ -94,14 +94,14 @@ const SideBar = () => {
                   </Link>
                 </li>
                 <li
-                 onClick={() => setDashActive("dashboard/order")}
-                 className={`rounded-sm text-gray-900 ${
-                   dashActive == "dashboard/order" && "bg-gray-100"
-                 }`}
+                  onClick={() => setDashActive("dashboard/order")}
+                  className={`rounded-sm text-gray-900 ${
+                    dashActive == "dashboard/order" && "bg-gray-100"
+                  }`}
                 >
                   <Link
                     rel="noopener noreferrer"
-                    href="/dashboard"
+                    href="/dashboard/order"
                     className="flex items-center p-2 space-x-3 rounded-md"
                   >
                     <svg
@@ -115,14 +115,14 @@ const SideBar = () => {
                   </Link>
                 </li>
                 <li
-                 onClick={() => setDashActive("dashboard/product")}
-                 className={`rounded-sm text-gray-900 ${
-                   dashActive == "dashboard/product" && "bg-gray-100"
-                 }`}
+                  onClick={() => setDashActive("dashboard/product")}
+                  className={`rounded-sm text-gray-900 ${
+                    dashActive == "dashboard/product" && "bg-gray-100"
+                  }`}
                 >
                   <Link
                     rel="noopener noreferrer"
-                    href="/dashboard"
+                    href="/dashboard/product"
                     className="flex items-center p-2 space-x-3 rounded-md"
                   >
                     <svg
@@ -234,13 +234,6 @@ const SideBar = () => {
             </li>
           </ul>
         </div>
-      </div>
-      <div className="flex items-center p-2 mt-12 space-x-4 justify-self-end">
-        <img
-          src="https://source.unsplash.com/100x100/?portrait"
-          alt=""
-          className="w-12 h-12 rounded-lg bg-gray-500"
-        />
       </div>
     </div>
   );

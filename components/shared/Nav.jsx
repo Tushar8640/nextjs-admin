@@ -22,7 +22,7 @@ const Navbar = ({ setToggle, toggle }) => {
 
   const theme = "dark";
   return (
-    <div className=" bg-gray-50">
+    <div className=" bg-gray-50 fixed w-full shadow z-10">
       <header>
         <div className=" flex py-2">
           <div className="ml-auto flex">
