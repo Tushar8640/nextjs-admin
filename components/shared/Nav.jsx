@@ -7,10 +7,11 @@ import { MdRefresh } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { BsFillBellFill } from "react-icons/bs";
-import { MdLightMode } from "react-icons/md";
-import { MdDisabledByDefault } from "react-icons/md";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 const Navbar = ({ setToggle, toggle }) => {
+  const cart = useSelector((state) => state.cart);
   // console.log(newNotification);
   // closing dropdown on clicking outside
   const ref = useRef();
@@ -38,7 +39,7 @@ const Navbar = ({ setToggle, toggle }) => {
               <button
                 className="mr-3 p-3  bg-white rounded-full"
                 title="Dark Mode"
-                onClick={() => themeModeChange("dark")}
+              
               >
                 <MdOutlineDarkMode className="w-8 h-8  text-black" />
               </button>
@@ -59,6 +60,23 @@ const Navbar = ({ setToggle, toggle }) => {
               >
                 <IoSettingsOutline className="w-8 h-8  text-black" />
               </button>
+
+              <button
+                className="mr-3 p-3  bg-white rounded-full relative"
+                title="Settings"
+                id="dropdownMenuButton1"
+                aria-expanded="false"
+                ref={ref}
+              >
+                {" "}
+                {cart.length > 0 && (
+                  <span class="absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">
+                    {cart?.length}
+                  </span>
+                )}
+                <MdOutlineShoppingCart className="w-8 h-8  text-black" />
+              </button>
+
               <div className="relative flex-shrink-0">
                 <img
                   src="https://source.unsplash.com/50x50/?portrait"

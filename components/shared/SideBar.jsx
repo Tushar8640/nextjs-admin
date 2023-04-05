@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 
 const SideBar = () => {
-  const router = useRouter()
+  const router = useRouter();
+  const [active, setActive] = useState("home");
+  const [dashActive, setDashActive] = useState("");
   return (
     <div className="flex flex-col h-full p-3 w-60 bg-gray-50 text-gray-800">
       <div className="space-y-3">
@@ -21,28 +23,15 @@ const SideBar = () => {
             </svg>
           </button>
         </div>
-        <div className="relative">
-          <span className="absolute inset-y-0 left-0 flex items-center py-4">
-            <button type="submit" className="p-2 focus:outline-none focus:ring">
-              <svg
-                fill="currentColor"
-                viewBox="0 0 512 512"
-                className="w-5 h-5 text-gray-600"
-              >
-                <path d="M479.6,399.716l-81.084-81.084-62.368-25.767A175.014,175.014,0,0,0,368,192c0-97.047-78.953-176-176-176S16,94.953,16,192,94.953,368,192,368a175.034,175.034,0,0,0,101.619-32.377l25.7,62.2L400.4,478.911a56,56,0,1,0,79.2-79.195ZM48,192c0-79.4,64.6-144,144-144s144,64.6,144,144S271.4,336,192,336,48,271.4,48,192ZM456.971,456.284a24.028,24.028,0,0,1-33.942,0l-76.572-76.572-23.894-57.835L380.4,345.771l76.573,76.572A24.028,24.028,0,0,1,456.971,456.284Z"></path>
-              </svg>
-            </button>
-          </span>
-          <input
-            type="search"
-            name="Search"
-            placeholder="Search..."
-            className="w-full py-2 pl-10 text-sm border-transparent rounded-md focus:outline-none bg-gray-100 text-gray-800 focus:bg-gray-50"
-          />
-        </div>
+
         <div className="flex-1">
           <ul className="pt-2 pb-4 space-y-1 text-sm">
-            <li className="rounded-sm">
+            <li
+              onClick={() => setActive("home")}
+              className={`rounded-sm text-gray-900 ${
+                active == "home" && "bg-gray-100"
+              }`}
+            >
               <Link
                 rel="noopener noreferrer"
                 href="/home"
@@ -58,7 +47,12 @@ const SideBar = () => {
                 <span>Home</span>
               </Link>
             </li>
-            <li className="rounded-sm">
+            <li
+              onClick={() => setActive("dashboard")}
+              className={`rounded-sm text-gray-900 ${
+                active == "dashboard" && "bg-gray-100"
+              }`}
+            >
               <Link
                 rel="noopener noreferrer"
                 href="/dashboard"
@@ -74,7 +68,81 @@ const SideBar = () => {
                 <span>Dashboard</span>
               </Link>
             </li>
-            <li className="rounded-sm">
+
+            {/* dashboard nested route  */}
+            {active == "dashboard" && (
+              <ul className="ml-4">
+                <li
+                  onClick={() => setDashActive("dashboard/customer")}
+                  className={`rounded-sm text-gray-900 ${
+                    dashActive == "dashboard/customer" && "bg-gray-100"
+                  }`}
+                >
+                  <Link
+                    rel="noopener noreferrer"
+                    href="/dashboard"
+                    className="flex items-center p-2 space-x-3 rounded-md"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                      className="w-5 h-5 fill-current text-gray-600"
+                    >
+                      <path d="M469.666,216.45,271.078,33.749a34,34,0,0,0-47.062.98L41.373,217.373,32,226.745V496H208V328h96V496H480V225.958ZM248.038,56.771c.282,0,.108.061-.013.18C247.9,56.832,247.756,56.771,248.038,56.771ZM448,464H336V328a32,32,0,0,0-32-32H208a32,32,0,0,0-32,32V464H64V240L248.038,57.356c.013-.012.014-.023.024-.035L448,240Z"></path>
+                    </svg>
+                    <span>Customers</span>
+                  </Link>
+                </li>
+                <li
+                 onClick={() => setDashActive("dashboard/order")}
+                 className={`rounded-sm text-gray-900 ${
+                   dashActive == "dashboard/order" && "bg-gray-100"
+                 }`}
+                >
+                  <Link
+                    rel="noopener noreferrer"
+                    href="/dashboard"
+                    className="flex items-center p-2 space-x-3 rounded-md"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                      className="w-5 h-5 fill-current text-gray-600"
+                    >
+                      <path d="M469.666,216.45,271.078,33.749a34,34,0,0,0-47.062.98L41.373,217.373,32,226.745V496H208V328h96V496H480V225.958ZM248.038,56.771c.282,0,.108.061-.013.18C247.9,56.832,247.756,56.771,248.038,56.771ZM448,464H336V328a32,32,0,0,0-32-32H208a32,32,0,0,0-32,32V464H64V240L248.038,57.356c.013-.012.014-.023.024-.035L448,240Z"></path>
+                    </svg>
+                    <span>Orders</span>
+                  </Link>
+                </li>
+                <li
+                 onClick={() => setDashActive("dashboard/product")}
+                 className={`rounded-sm text-gray-900 ${
+                   dashActive == "dashboard/product" && "bg-gray-100"
+                 }`}
+                >
+                  <Link
+                    rel="noopener noreferrer"
+                    href="/dashboard"
+                    className="flex items-center p-2 space-x-3 rounded-md"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                      className="w-5 h-5 fill-current text-gray-600"
+                    >
+                      <path d="M469.666,216.45,271.078,33.749a34,34,0,0,0-47.062.98L41.373,217.373,32,226.745V496H208V328h96V496H480V225.958ZM248.038,56.771c.282,0,.108.061-.013.18C247.9,56.832,247.756,56.771,248.038,56.771ZM448,464H336V328a32,32,0,0,0-32-32H208a32,32,0,0,0-32,32V464H64V240L248.038,57.356c.013-.012.014-.023.024-.035L448,240Z"></path>
+                    </svg>
+                    <span>Products</span>
+                  </Link>
+                </li>
+              </ul>
+            )}
+            <li
+              onClick={() => setActive("cart")}
+              className={`rounded-sm text-gray-900 ${
+                active == "cart" && "bg-gray-100"
+              }`}
+            >
               <Link
                 rel="noopener noreferrer"
                 href="/cart"
@@ -95,7 +163,7 @@ const SideBar = () => {
             <li className="rounded-sm">
               <Link
                 rel="noopener noreferrer"
-                href="/"
+                href="/home"
                 className="flex items-center p-2 space-x-3 rounded-md"
               >
                 <svg
@@ -109,11 +177,16 @@ const SideBar = () => {
                 <span>Chat</span>
               </Link>
             </li>
-          
-            <li className="rounded-sm bg-gray-100 text-gray-900">
+
+            <li
+              onClick={() => setActive("wishlist")}
+              className={`rounded-sm text-gray-900 ${
+                active == "wishlist" && "bg-gray-100"
+              }`}
+            >
               <Link
                 rel="noopener noreferrer"
-                href="/"
+                href="/home"
                 className="flex items-center p-2 space-x-3 rounded-md"
               >
                 <svg
@@ -129,7 +202,7 @@ const SideBar = () => {
             <li className="rounded-sm">
               <Link
                 rel="noopener noreferrer"
-                href="/settings"
+                href="/home"
                 className="flex items-center p-2 space-x-3 rounded-md"
               >
                 <svg
@@ -145,7 +218,7 @@ const SideBar = () => {
             </li>
             <li className="rounded-sm">
               <button
-               onClick={()=>router.push("/")}
+                onClick={() => router.push("/")}
                 className="flex items-center p-2 space-x-3 rounded-md"
               >
                 <svg
@@ -168,7 +241,6 @@ const SideBar = () => {
           alt=""
           className="w-12 h-12 rounded-lg bg-gray-500"
         />
-       
       </div>
     </div>
   );
