@@ -7,6 +7,7 @@ const cart = () => {
   const router = useRouter()
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  // dispatch action for remove product from cart 
   const handleRemoveCart = (id) => {
     dispatch(removeFromCart(id));
   };

@@ -20,6 +20,8 @@ const ProductDetails = ({ data }) => {
   const dispatch= useDispatch()
   const { id, title, description, price, thumbnail, rating } = data || {};
   console.log(data);
+
+  // dispatch action for add product to cart 
   const handleAddToCart=()=>{
     dispatch(addToCart(data))
   }
