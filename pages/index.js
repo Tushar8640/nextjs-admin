@@ -7,6 +7,7 @@ import Login from "@/components/Login/Login";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  // this is landing page for this app 
   return (
     <>
       <Login/>

@@ -13,15 +13,9 @@ import Link from "next/link";
 
 const Navbar = ({ setToggle, toggle }) => {
   const cart = useSelector((state) => state.cart);
-  // console.log(newNotification);
-  // closing dropdown on clicking outside
+
   const ref = useRef();
-  const btnRef = useRef();
 
-  //search functionality with debounce
-  const [search, setSearch] = useState("");
-
-  const theme = "dark";
   return (
     <div className=" bg-gray-50 fixed w-full shadow z-10">
       <header>

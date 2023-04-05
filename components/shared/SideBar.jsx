@@ -10,6 +10,7 @@ const SideBar = () => {
   const router = useRouter();
   const [active, setActive] = useState("home");
   const [dashActive, setDashActive] = useState("");
+  // side bar 
   return (
     <div className="flex mt-2 z-50 flex-col h-full p-3 w-60 bg-gray-50 text-gray-800 fixed">
       <div className="space-y-3">
