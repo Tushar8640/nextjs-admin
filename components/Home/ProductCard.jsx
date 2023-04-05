@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const ProductCard = ({ data }) => {
@@ -21,12 +22,15 @@ const ProductCard = ({ data }) => {
           <p className="text-gray-800 font-bold">{category}</p>
         </div>
         <p className="text-gray-800">{description.slice(0, 50)}...</p>
+        <Link href={`/home/${id}`}>
+        
         <button
           type="button"
           className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-blue-600 text-gray-50"
         >
           Read more
         </button>
+        </Link>
       </div>
     </div>
   );
