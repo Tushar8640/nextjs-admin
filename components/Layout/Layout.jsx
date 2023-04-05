@@ -6,17 +6,13 @@ const Layout = ({ children }) => {
   return (
     <>
       <Navbar />
-     
-      <div className="grid grid-cols-12">
-            <div className="col-span-4">
-                <SideBar/>
-            </div>
-            <div className="col-span-8">
-                {children}
-            </div>
 
+      <div className="grid grid-cols-12">
+        <div className="col-span-2">
+          <SideBar />
+        </div>
+        <div className="col-span-10">{children}</div>
       </div>
-     
     </>
   );
 };
