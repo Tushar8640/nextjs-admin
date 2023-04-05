@@ -4,7 +4,7 @@ import React from "react";
 const Login = () => {
   const router = useRouter();
   const handleLogin=()=>{
-    router.push("./")
+    router.push("./dashboard")
   }
   return (
   <div className="flex justify-center mt-24">
