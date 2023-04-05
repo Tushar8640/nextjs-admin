@@ -1,19 +1,25 @@
 import Layout from "@/components/Layout/Layout";
+import { wrapper } from "@/redux/store";
 import "@/styles/globals.css";
 import { useRouter } from "next/router";
+import { Provider } from "react-redux";
 
-export default function App({ Component, pageProps }) {
+function App({ Component, ...rest }) {
   const router = useRouter();
+  const { store, props } = wrapper.useWrappedStore(rest);
+  const { emotionCache: clientSideEmotionCache, pageProps } = props;
   return (
     <>
-      {router.pathname !== "/"  ? (
-        <Layout>
+      <Provider store={store}>
+        {router.pathname !== "/" ? (
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        ) : (
           <Component {...pageProps} />
-        </Layout>
-      ) : (
-        <Component {...pageProps} />
-      )}
+        )}
+      </Provider>
     </>
   );
-
 }
+export default wrapper.withRedux(App);

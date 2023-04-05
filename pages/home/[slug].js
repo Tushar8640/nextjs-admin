@@ -1,6 +1,8 @@
+import { addToCart } from "@/redux/features/cart/cartSlice";
 import axios from "axios";
 import Image from "next/image";
 import React from "react";
+import { useDispatch } from "react-redux";
 export async function getServerSideProps(ctx) {
   const { params } = ctx;
   const { slug } = params;
@@ -15,8 +17,13 @@ export async function getServerSideProps(ctx) {
   };
 }
 const ProductDetails = ({ data }) => {
+  const dispatch= useDispatch()
   const { id, title, description, price, thumbnail, rating } = data || {};
   console.log(data);
+  const handleAddToCart=()=>{
+    dispatch(addToCart(data))
+  }
+
   return (
     <div className="flex h-full flex-row justify-evenly mt-20 p-10">
       <div className="w-1/2">
@@ -36,8 +43,8 @@ const ProductDetails = ({ data }) => {
           <button className="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded ">
             <a href="#">Buy Now</a>
           </button>
-          <button className="self-end bg-black hover:bg-white text-white font-semibold hover:text-black py-2 px-4 border border-black hover:border-transparent rounded">
-            <a href="#">Add to Cart</a>
+          <button onClick={handleAddToCart} className="self-end bg-black hover:bg-white text-white font-semibold hover:text-black py-2 px-4 border border-black hover:border-transparent rounded">
+            Add to Cart
           </button>
         </div>
       </div>
