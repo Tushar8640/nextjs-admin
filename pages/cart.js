@@ -2,14 +2,16 @@ import { removeFromCart } from "@/redux/features/cart/cartSlice";
 import { useRouter } from "next/router";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 const cart = () => {
-  const router = useRouter()
+  const router = useRouter();
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  // dispatch action for remove product from cart 
+  // dispatch action for remove product from cart
   const handleRemoveCart = (id) => {
     dispatch(removeFromCart(id));
+    Swal.fire("Product Removed form cart");
   };
   return (
     <div>
@@ -19,7 +21,7 @@ const cart = () => {
         </h2>
         <ul className="flex flex-col divide-y divide-gray-300">
           {cart.length !== 0 &&
-            cart?.map((c,i) => (
+            cart?.map((c, i) => (
               <li
                 key={c?.id}
                 className="flex flex-col py-6 sm:flex-row sm:justify-between"
@@ -70,7 +72,7 @@ const cart = () => {
 
         <div className=" space-x-4">
           <button
-          onClick={()=>router.push("./home")}
+            onClick={() => router.push("./home")}
             type="button"
             className="px-6 py-2 border rounded-md border-blue-600"
           >

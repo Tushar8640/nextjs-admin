@@ -3,6 +3,7 @@ import axios from "axios";
 import Image from "next/image";
 import React from "react";
 import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
 export async function getServerSideProps(ctx) {
   const { params } = ctx;
   const { slug } = params;
@@ -24,6 +25,7 @@ const ProductDetails = ({ data }) => {
   // dispatch action for add product to cart 
   const handleAddToCart=()=>{
     dispatch(addToCart(data))
+    Swal.fire('Product added to cart')
   }
 
   return (

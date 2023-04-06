@@ -28,7 +28,7 @@ const ProductCard = ({ data }) => {
           type="button"
           className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-blue-600 text-gray-50"
         >
-          Read more
+          Buy Now
         </button>
         </Link>
       </div>
