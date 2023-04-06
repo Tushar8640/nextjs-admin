@@ -6,20 +6,19 @@ import { Provider } from "react-redux";
 
 function App({ Component, ...rest }) {
   const router = useRouter();
-  const { store, props } = wrapper.useWrappedStore(rest);
-  const { emotionCache: clientSideEmotionCache, pageProps } = props;
+  const {store, props} = wrapper.useWrappedStore(rest);
   return (
     <>
       <Provider store={store}>
         {router.pathname !== "/" ? (
           <Layout>
-            <Component {...pageProps} />
+            <Component {...props.pageProps} />
           </Layout>
         ) : (
-          <Component {...pageProps} />
+          <Component {...props.pageProps} />
         )}
       </Provider>
     </>
   );
 }
-export default wrapper.withRedux(App);
+export default App;
